@@ -1,6 +1,18 @@
 import os, errno, sys, time, shutil
 import shlex, subprocess
 import multiprocessing as mp
+import numpy as np
+
+def median(list):
+    return np.median(np.array(list)).tolist()
+
+def get_stats(data, Z=1.96):
+    mean = np.mean(data , dtype=np.float32)
+    std = np.std(data, dtype=np.float32, ddof=1)
+    CI = Z * (std / math.sqrt(len(data)))
+
+    return (mean , CI)
+
 
 def countdown(t): # in seconds
     for i in range(t,0,-1):
