@@ -90,7 +90,7 @@ def create_output_directory(dirs):
 
 
 
-def call_java(xms, xmx, cplex, jar, args):
+def call_java(xms, xmx, cplex, jar, args, java='java'):
 
     # splitting the args 
     command = shlex.split(args)
@@ -99,7 +99,7 @@ def call_java(xms, xmx, cplex, jar, args):
     options = optionizer(command)
 
     # add extra java parameters
-    command[0:0] = ['java', cplex,  '-Xmx%dg' % (xmx), '-Xms%dg' % (xms),'-XX:-UseGCOverheadLimit', '-jar', jar]
+    command[0:0] = [java, cplex,  '-Xmx%dg' % (xmx), '-Xms%dg' % (xms),'-XX:-UseGCOverheadLimit', '-jar', jar]
 
 
     # creating files for stdout and stderr of each java called by the worker's children process
