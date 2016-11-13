@@ -90,7 +90,7 @@ def create_output_directory(dirs):
 
 
 
-def call_java(xms, xmx, cplex, jar, java, args):
+def call_java(xms, xmx, cplex='', jar, java, args):
 
     # splitting the args 
     command = shlex.split(args)
