@@ -99,7 +99,10 @@ def call_java(xms, xmx, cplex, jar, java, args):
     options = optionizer(command)
 
     # add extra java parameters
-    command[0:0] = [java, cplex,  '-Xmx%dg' % (xmx), '-Xms%dg' % (xms),'-XX:-UseGCOverheadLimit', '-jar', jar]
+    if cplex == '':
+        command[0:0] = [java,  '-Xmx%dg' % (xmx), '-Xms%dg' % (xms),'-XX:-UseGCOverheadLimit', '-jar', jar]
+    else:
+        command[0:0] = [java, cplex,  '-Xmx%dg' % (xmx), '-Xms%dg' % (xms),'-XX:-UseGCOverheadLimit', '-jar', jar]
 
 
     # creating files for stdout and stderr of each java called by the worker's children process
