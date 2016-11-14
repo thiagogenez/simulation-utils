@@ -114,7 +114,7 @@ def call_java(xms, xmx, cplex, jar, java, args):
 
     with open(stdout,'w+') as out, open(stderr,'w+') as err:
 
-        p = subprocess.Popen(['echo', str(command)+'\n'], stdout=out, stderr=err)
+        p = subprocess.Popen(['echo', ' '.join(l)+'\n'], stdout=out, stderr=err)
         p.wait()
 
         print ("Worker PID = %d running: %s\n") % (os.getpid(), command)
