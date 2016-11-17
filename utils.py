@@ -15,10 +15,12 @@ def get_stats(data, Z=1.96):
 
 
 def countdown(t): # in seconds
-    for i in range(t,0,-1):
+    for i in range(t,-1,-1):
         print 'Simulation will start in: %d seconds\r' % i,
         sys.stdout.flush()
         time.sleep(1)
+    sys.stdout.flush()
+    print 'Running ...'
 
 def start_process():
     print 'Worker ready to work: ', mp.current_process().name
