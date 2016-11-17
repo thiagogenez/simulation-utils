@@ -131,9 +131,9 @@ def call_java(xms, xmx, cplex, jar, java, args):
     time.sleep(1)
     # rename the filenames of the stdout and stderr
     mv_out = subprocess.Popen(['mv', stdout, stdout.replace('.running', '')])
-    mv_err = subprocess.Popen(['mv', stderr, stderr.replace('.running', '')])
-    
     mv_out.wait()
+
+    mv_err = subprocess.Popen(['mv', stderr, stderr.replace('.running', '')])
     mv_err.wait();
 
     return os.getpid()
